@@ -10,8 +10,8 @@ typedef struct  island {
 } island;
 
 island* create(char *name) {
-    island *i = malloc(sizeof(island));
-    i->name = strdup(name);
+    island *i = malloc(sizeof(island)); // Создаем место в куче размером с размером структуры
+    i->name = strdup(name); // Создаем копию имени, т.к. иначе у всех островов будет одно имя
     i->opens = "09:00";
     i->closes = "17:00";
     i->next = NULL;
@@ -30,8 +30,8 @@ void release(island *start) {
     island *next= NULL;
     for(;i != NULL; i = next) {
         next = i->next;
-        free(i->name);
-        free(i);
+        free(i->name); // Освобождаем имя из кучи
+        free(i); // Освобождаем экземпляр структуры
     }
 }
 
